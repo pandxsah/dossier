@@ -39,7 +39,7 @@ RUN yarn install --immutable
 FROM deps AS build
 ENV NEXT_TELEMETRY_DISABLED=1
 COPY . .
-RUN yarn prisma generate && yarn build
+RUN yarn build
 # Prisma's CLI for `migrate deploy`, at the version in yarn.lock, with the
 # same resolutions as package.json; not the rest of the dev dependencies.
 RUN mkdir /tools && node -e ' \

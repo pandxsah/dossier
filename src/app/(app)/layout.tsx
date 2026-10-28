@@ -15,6 +15,10 @@ import { appVersion } from "@/lib/version";
 import { Sidebar } from "./sidebar";
 import { UsagePingDialog } from "./usage-ping-dialog";
 
+// Child pages can begin rendering before the layout awaits its session.
+// Keep their database reads out of build-time prerendering as well.
+export const dynamic = "force-dynamic";
+
 /**
  * The signed-in shell: sidebar on the left, the screen on the right. Routes
  * outside the (app) group, such as /login, render without it. Every page
